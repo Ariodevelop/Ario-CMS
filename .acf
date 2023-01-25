@@ -1,0 +1,18 @@
+ROUTES {
+  / {
+    FUNCTION = MAIN_PAGE
+    METHODS = GET , HEAD
+  }
+  /admin {
+    FUNCTION = LOAD_PAGE
+  }
+
+  /bootstap.css,
+  /bootstrap.js
+  {
+
+  }
+}
+DATABASE {
+
+}

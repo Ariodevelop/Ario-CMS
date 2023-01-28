@@ -9,7 +9,6 @@ define('__LIBRARY__', __ENGINE__ . _ . 'Library');
 
 require_once __ENGINE__ . _ . 'Loader.php';
 
-define('__CONFIG__', Config\Parser::parse_acf(__DIR__ ._.'.acf'));
+define('__CONFIG__', Config\Parser::parse_acf(__DIR__ . _ . '.acf'));
 
-
-var_dump(__CONFIG__);
+load('Router');

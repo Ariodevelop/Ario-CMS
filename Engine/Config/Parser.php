@@ -14,38 +14,38 @@ class Parser
     $_RAW = preg_replace('/\s*,\s*/', ',', $_RAW);
 
 
-    $explode = explode(' ', $_RAW);
+    $_EXPLODE = explode(' ', $_RAW);
 
-    return self::scope_reader($explode);
+    return self::scope_reader($_EXPLODE);
   }
 
-  static private function scope_reader(&$array)
+  static private function scope_reader(&$_ARRAY)
   {
-    $output = array();
-    $count = count($array);
+    $_OUTPUT = array();
+    $count = count($_ARRAY);
 
     for ($i = 0; $i < $count; $i++)
     {
-      $item = &$array[$i];
+      $item = &$_ARRAY[$i];
 
       if ($item == '{')
       {
-        $subArray = array_slice($array, $i + 1);
+        $subArray = array_slice($_ARRAY, $i + 1);
         $out = self::scope_reader($subArray);
-        $output[$array[$i - 1]] = $out;
+        $_OUTPUT[$_ARRAY[$i - 1]] = $out;
         $i += count($out) + 2;
       }
       if ($item == '}')
       {
-        return $output;
+        return $_OUTPUT;
       }
 
-      $explode = explode('=', $array[$i]);
+      $explode = explode('=', $_ARRAY[$i]);
       if (count($explode) == 2)
       {
-        $output[$explode[0]] = $explode[1];
+        $_OUTPUT[$explode[0]] = $explode[1];
       }
     }
-    return $output;
+    return $_OUTPUT;
   }
 }

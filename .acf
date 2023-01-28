@@ -5,6 +5,7 @@ ROUTES {
   }
   /admin {
     FUNCTION = LOAD_PAGE
+    METHODS = GET , HEAD
   }
 
   /bootstap.css,
@@ -13,6 +14,11 @@ ROUTES {
 
   }
 }
+
+WEBSITE {
+  THEME = NULL
+}
+
 DATABASE {
 
 }

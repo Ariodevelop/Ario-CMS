@@ -1,21 +1,20 @@
 <?php
 
-abstract class Router
+$_routes = __CONFIG__['ROUTES'];
+
+
+if (isset($_routes[__REQ_PATH__]))
 {
-  
+  $_route = $_routes[__REQ_PATH__];
+
+  $_request_function = $_route['FUNCTION'];
+
+  $_request_method = $_route['MEHTODS'];
+
+
+  if (!method_exists('Routes\Functions', $_request_function)) Routes\Functions::_503();
 }
-
-$_ROUTES = __CONFIG__['ROUTES'];
-
-var_dump($_ROUTES);
-if (isset($_ROUTES[__REQ_PATH__]))
+else
 {
-  $_REQ_PATH = $_ROUTES[__REQ_PATH__];
-  $_REQ_METHOD = $_ROUTES['MEHTOD'];
-
-  echo $_REQ_METHOD;
-
-  if (function_exists($_ROUTE))
-  {
-  }
+  Routes\Functions::_404();
 }

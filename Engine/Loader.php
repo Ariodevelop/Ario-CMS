@@ -1,13 +1,10 @@
 <?php
 
-spl_autoload_register(
+spl_autoload_register('load');
 
-  function ($class)
-  {
-    $class = str_replace('\\', _, $class);
-    require_once __ENGINE__ . _ . $class . '.php';
-    if (method_exists($class, "__static")) $class::__static();
-  }
-
-);
-
+function load($classname)
+{
+  $classname = str_replace('\\', _, $classname);
+  require_once __ENGINE__ . _ . $classname . '.php';
+  if (method_exists($classname, "__static")) $classname::__static();
+}
